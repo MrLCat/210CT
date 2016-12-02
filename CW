@@ -1,0 +1,287 @@
+//210CT Programming, Algorithms and Data Structures
+//Week 1
+//1.
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+int main(){
+	int ar[5]={1,2,3,4,5};
+for(int i = 0; i<5;i++){ //for function is to print whole array since C++ can’t do it.
+cout<<ar[i];
+}
+random_shuffle(&ar[0], &ar[5]); //puts the array in random order
+cout<< '\n';
+for(int i=0;i<5;i++){
+cout<<ar[i];
+}
+	system("PAUSE");
+}
+
+//2.
+
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+int main(){
+	
+	int i;
+	int total = 0;
+	cout<<"Factorial pls: ";
+	cin>> i;
+for(int a=5; i/a>=1;a*=5 ){ 
+total += i/a;
+}
+/*	For loop multiplies "A" by 5 every time it finishes dividing
+Factorial number and adds every trailing zero together.
+It runs the program like this:
+	total += i/5;
+	total += i/25;
+	total += i/125;
+	....
+	so the factorial 100! has 20 trailing zero's of "5" prime factors
+	and also 4 more trailing zero's of "25" prime factors
+	So factorial 100! has 24 Trailing zero's added together
+	*/
+	cout << total;
+	cout << '\n';
+	system("PAUSE");
+}
+
+//Week 2
+//3.
+
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+int main(){
+	int input,a;
+	cout << "enter integer: ";
+	cin>>input;	
+	for(int i=1;i<=input;i++){
+		a=sqrt(i);	/*a = square root of integer i
+		Only print perfect squares when square root of i
+		is multiplied by it self*/
+		if(a*a == i){
+			cout<<i<< " Current Highest perfect square"<<endl;
+			system("Pause");
+		}
+	}
+	cin.get();
+	return 0;
+}
+
+//4.
+
+#include <iostream>
+#include <algorithm>
+using namespace std;
+int* testArray;
+int ar[5]={1,2,3,4,5};
+int array = sizeof(ar);
+/*
+-BIg O: 0(n)-
+It tests and shows for how long does the code run
+and how many times it needs to run to complete array
+*/
+void BigO(){
+	for(int count=0;count<array;count++){
+		cout << testArray[count]<< " and "<< count <<endl;
+	}
+}
+int main(){
+	testArray = new int[array];
+	for(int i = 0; i<5;i++){ //for function is to print whole array since C++ can't do it.
+		cout<<ar[i];
+	}
+	random_shuffle(&ar[0], &ar[5]); //puts the array in random order
+	cout<< '\n';
+	for(int i=0;i<5;i++){
+		cout<<ar[i];
+	}
+	cout<<endl;
+	BigO();
+	/*
+	When running big O you can see that the code can be shorter
+	because it shows you that the code was runned 20 times
+	when It could be runned only 10 times
+	*/
+	system("PAUSE");
+}
+
+//5.
+
+//Week 3
+//6.
+
+#include <iostream>
+#include <string.h>
+using namespace std;
+int* testArray;
+char word[] = "This is awesome ";
+int array = sizeof(word);
+void BigO(){
+	for(int count=0;count<array;count++){
+		cout << testArray[count]<< " and "<< count <<endl;
+	}
+}
+int main(){
+	testArray = new int[array];
+	char storeletter;
+	int lenght = strlen(word);
+	int changeletter;
+	cout<< lenght<<endl;	
+	//reversing letters
+	for(int letter=0,space=0;space<lenght;space++){		if(!isalnum(word[space])){//!isalnum Checking if the char is not aplhanumeric			if (space < lenght -1){//because of this we need to write another space at the end				changeletter = space - 1;
+			}
+			else{
+				changeletter = space;
+			}	
+			for(changeletter;letter< changeletter;changeletter--){
+				storeletter = word[letter];
+				word[letter] = word[changeletter];
+				word[changeletter] = storeletter;
+				letter++;
+				//swaping places of each word that ends with space, when space is found it changes
+//to another word
+			}
+		letter = space + 1;//If the space is found instead of character it skips it
+	}
+}
+	//reversing words
+	for(int firstletter=0,lastletter=lenght;firstletter<lastletter;firstletter++){		storeletter = word[lastletter];
+		word[lastletter] = word[firstletter];
+		word[firstletter]=storeletter;
+		lastletter--;
+		//changing first letter with last one and applying last to first
+	}
+	for(int i=0;i<=lenght;i++){
+		cout<<word[i];
+	}
+	cout<<endl;
+	BigO();
+	system("Pause");
+	return 0;
+}
+
+//7.
+
+#include <iostream>
+#include <string.h>
+#include <stdio.h>
+#include <math.h>
+using namespace std;
+void Prime(float n){
+	int j = 0;
+	for(int i = 1;i<=n;i++){
+		float answer = n/i;
+		if(answer-(int)answer==0){ //If the float - integer = 0 then it's true
+		j++;
+		}
+		}
+	if(j==2){
+		cout<< "The Integer You entered is PRIME!"<<endl;
+	}
+	else{
+		cout<<"The Integer You entered is NOT prime!"<<endl;
+	}
+	}
+int main(){
+	int n;
+	cout<<"enter n: ";
+	cin>>n;
+	Prime(n);
+	system("Pause");
+	return 0;
+}
+
+//8.
+
+#include <iostream>
+using namespace std;
+int main(){
+	char vowels[]="aeui";
+	char word[]= "beautiful";
+	int wordsize = sizeof(word);
+	
+
+for(int i=0,a=0;i<wordsize;i++){
+		if(word[i]!=vowels[0] && word[i]!=vowels[1] && word[i]!=vowels[2]&& word[i]!=vowels[3] && word[i]!=vowels[4]){
+				word[a]=word[i];
+				a++;
+				word[a]='\0';
+			}
+	}
+	cout<<word<<endl;
+	return 0;
+}
+
+//Week 4
+//9.
+
+#include <iostream>
+using namespace std;
+int main() {
+	bool intfound;
+	int a[] = { 2, 3, 4, 6, 7, 9, 12, 13 ,16};
+	int from = 10; int to = 14; 
+for (int i = 0; i < a[i]; i++) { 
+		intfound = false;
+		cout << a[i] << endl;
+		if (a[i] >= from && a[i] <= to) {
+// If in for loop to find the integer in between “from” and “to”
+			intfound = true;
+			cout << intfound;
+			cin.get();
+			return 0;
+		}
+	}
+	cin.get();
+	return 0;
+}
+
+//Week 5
+//10.
+
+#include <iostream>
+#include <string.h>
+#include <stdio.h>
+#include <math.h>
+using namespace std;
+int main(){
+	int listn[]={1,5,2,0,7,3,9};
+	int lils[]={1,1,1,1,1,1,1};
+	int sizeoflist = sizeof(listn);
+	int hold;
+	for(int i=0, j=1;j<7;j++){
+		while(i<j){
+			if(lils[j]<lils[i]+1){
+				if(listn[i]<listn[j]){
+					lils[j]=lils[i]+1;
+				}
+			}
+			i++;
+		}
+		i=0;
+}
+	for(int l=0,k=l+1;l<7;l++){
+		if(lils[l]>lils[k]){
+		hold=lils[l];
+		lils[l]=lils[k];
+		lils[k]=hold;
+		l=0;
+		}
+	}
+	for(int z=0;z<7;z++){
+		cout<<lils[z];
+	}
+	cout<<endl;
+	system("Pause");
+	return 0;
+}
+
+//11.
+
